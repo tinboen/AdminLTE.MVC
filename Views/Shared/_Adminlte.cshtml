@@ -32,8 +32,21 @@
                 <div class="container-fluid">
                     @RenderBody()
                 </div>
+
+                <div class="loaderbody" id="loaderbody">
+                    <div class="loader"></div>
+                </div>
+
+                <partial name="~/Views/UIComponents/_SmallModal.cshtml" />
+                <partial name="~/Views/UIComponents/_MediumModal.cshtml" />
+                <partial name="~/Views/UIComponents/_BigModal.cshtml" />
+                <partial name="~/Views/UIComponents/_ExtraBigModal.cshtml" />
+                <partial name="~/Views/UIComponents/_ImageViewModal.cshtml" />
             </div>
         </div>
+
+        <partial name="_AdminlteScript" />
+
         <aside class="control-sidebar control-sidebar-dark">
             <div class="p-3">
                 <h5>Title</h5>

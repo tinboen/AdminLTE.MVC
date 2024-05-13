@@ -1,17 +1,12 @@
 ﻿@using AdminLTE.MVC.Models
 @model List<AdminLTE.MVC.Models.UserRolesViewModel>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "User Roles";
 }
 <h1>User Roles</h1>
-<form method="post" asp-action="AddOrEditUser" asp-controller="UserRoles">
-    <div class="input-group">
-        <span class="input-group-btn">
-            <button class="btn btn-info">Add New User</button>
-        </span>
-    </div>
-</form>
+<div class="text-left">
+    <a onclick="loadBigModal('@Url.Action("AddOrEditUser","UserRoles",new {userId=""},Context.Request.Scheme)','Add New User')" class="btn btn-info text-white"><i class="fas fa-user-alt"></i> Add New User</a>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -31,8 +26,8 @@
                 <td>@user.Email</td>
                 <td>@string.Join(" , ", user.Roles.ToList())</td>
                 <td>
-                    <a class="btn btn-info" asp-controller="UserRoles" asp-action="AddOrEditUser" asp-route-userId="@user.UserId" style="width:auto">Edit User</a>
-                    <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId" style="width:auto">Manage Roles</a>
+                    <a onclick="loadBigModal('@Url.Action("AddOrEditUser","UserRoles",new {userId=@user.UserId},Context.Request.Scheme)','Edit User')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit User</a>
+                    <a onclick="loadBigModal('@Url.Action("Manage","UserRoles",new {userId=@user.UserId},Context.Request.Scheme)','Manage Roles')" class="btn btn-primary text-white"><i class="fas fa-scroll"></i> Manage Roles</a>
                 </td>
             </tr>
         }

@@ -1,12 +1,10 @@
 ﻿@model List<ManageUserRolesViewModel>
 @{
-    ViewData["Title"] = "Manage";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 <form method="post">
     <div class="card">
         <div class="card-header">
-            <h2>Manage User Roles</h2>
             Add/Remove Roles for User / @ViewBag.UserName.
         </div>
         <div class="card-body">

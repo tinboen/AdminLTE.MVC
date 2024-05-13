@@ -1,0 +1,43 @@
+﻿<!-- Success Alert -->
+@if (TempData["successAlert"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>Success!</strong> @TempData["successAlert"]</p>
+    </div>
+}
+
+<!-- Error Alert -->
+@if (TempData["errorAlert"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>Error!</strong> @TempData["errorAlert"]</p>
+    </div>
+}
+
+<!-- Warning Alert -->
+@if (TempData["warningAlert"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>Warning!</strong> @TempData["warningAlert"]</p>
+    </div>
+}
+
+<!-- Info Alert -->
+@if (TempData["infoAlert"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>Info!</strong> @TempData["infoAlert"]</p>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, 5000);
+    });
+</script>

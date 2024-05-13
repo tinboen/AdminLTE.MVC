@@ -66,7 +66,7 @@ namespace AdminLTE.MVC.Controllers
                 }
                 model.Add(userRolesViewModel);
             }
-            return View(model);
+            return PartialView("_ManageRoles", model);
         }
         [HttpPost]
         public async Task<IActionResult> Manage(List<ManageUserRolesViewModel> model, string userId)
@@ -101,7 +101,7 @@ namespace AdminLTE.MVC.Controllers
             var model = new UserViewModel();
             if (string.IsNullOrEmpty(userId))
             {
-                return View(model);
+                return PartialView("_AddOrEditUser", model);
             }
             else
             {
@@ -112,7 +112,7 @@ namespace AdminLTE.MVC.Controllers
                     model.Email = user.Email;
                     model.LastName = user.LastName;
                     model.FirstName = user.FirstName;
-                    return View(model);
+                    return PartialView("_AddOrEditUser", model);
                 }
                 else
                     return RedirectToAction("Index");
@@ -120,7 +120,7 @@ namespace AdminLTE.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddOrEditUser(string id, [Bind("UserId,LastName,FirstName,Email,Password,PhoneNumber")] UserViewModel model)
+        public async Task<IActionResult> AddOrEditUser(string id, [Bind("UserId,LastName,FirstName,Email,PhoneNumber,Password")] UserViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -189,7 +189,8 @@ namespace AdminLTE.MVC.Controllers
                             else
                             {
                                 ModelState.AddModelError("", result.Errors.ToString());
-                                return View(user);
+                                return PartialView("_AddOrEditUser", model);
+                                // return View(user);
                             }
                         }
                     }
@@ -197,7 +198,7 @@ namespace AdminLTE.MVC.Controllers
                         ModelState.AddModelError("", "User Not Found");
                 }
             }
-            return View(model);
+            return PartialView("_AddOrEditUser", model);
         }
 
 
